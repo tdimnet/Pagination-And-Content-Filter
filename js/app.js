@@ -24,16 +24,26 @@ document.querySelector('.page-header').appendChild(studentSearchContainer);
 // The search function
 function searchForAName() {
   // Asigning the search input value
-  const searchText = searchInput.value;
+  const searchText = searchInput.value.toLowerCase();
 
   // If the search input is not filled in, show error
   if (searchText.length === 0) {
     alert('Please fill in the form..');
   // Else search for the name
   } else {
-    console.log(searchText);
+    // Loop into the studentsArray in order to search for a name 
+    for (let i = 0; i < studentsArray.length; i++) {
+      // Take the name within the h3 tag, build the variables needed
+      let studentFullName = studentsArray[i].querySelector('h3').textContent;
+      studentFullName = studentFullName.split(' ');
+      let firstName = studentFullName[0].toLowerCase();
+      let lastName = studentFullName[1].toLowerCase();
+      // Then check if the searchText = lastName ou firstName
+      if ( (firstName === searchText) || (lastName === searchText) ) {
+        console.log('Ok');
+      }
+    }
   }
-
 } // End: searchForAName function
 
 
