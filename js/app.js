@@ -34,13 +34,17 @@ function searchForAName() {
     // Loop into the studentsArray in order to search for a name 
     for (let i = 0; i < studentsArray.length; i++) {
       // Take the name within the h3 tag, build the variables needed
-      let studentFullName = studentsArray[i].querySelector('h3').textContent;
-      studentFullName = studentFullName.split(' ');
-      let firstName = studentFullName[0].toLowerCase();
-      let lastName = studentFullName[1].toLowerCase();
+      let studentContainer  = studentsArray[i];
+      let studentFullName   = studentsArray[i].querySelector('h3').textContent;
+      studentFullName       = studentFullName.split(' ');
+      let firstName         = studentFullName[0].toLowerCase();
+      let lastName          = studentFullName[1].toLowerCase();
       // Then check if the searchText = lastName ou firstName
       if ( (firstName === searchText) || (lastName === searchText) ) {
-        console.log('Ok');
+        // First, remove all the element within the student-list
+        
+        // Then, add the new selected one
+        console.log(studentContainer);
       }
     }
   }
