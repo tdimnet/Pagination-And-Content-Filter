@@ -1,4 +1,5 @@
 // Selecting the elements already here inside the DOM
+const studentList             = document.querySelector('.student-list');
 const studentsArray           = document.querySelectorAll('.student-details');
 
 
@@ -6,6 +7,7 @@ const studentsArray           = document.querySelectorAll('.student-details');
 const studentSearchContainer  = document.createElement('div');
 const searchInput             = document.createElement('input');
 const searchButton            = document.createElement('button');
+const studentToShow           = [];
 
 
 // Adding classes, attributes & texts when needed
@@ -31,7 +33,7 @@ function searchForAName() {
     alert('Please fill in the form..');
   // Else search for the name
   } else {
-    // Loop into the studentsArray in order to search for a name 
+    // Loop into the studentsArray in order to search for a name
     for (let i = 0; i < studentsArray.length; i++) {
       // Take the name within the h3 tag, build the variables needed
       let studentContainer  = studentsArray[i];
@@ -42,12 +44,21 @@ function searchForAName() {
       // Then check if the searchText = lastName ou firstName
       if ( (firstName === searchText) || (lastName === searchText) ) {
         // First, remove all the element within the student-list
-        
-        // Then, add the new selected one
-        console.log(studentContainer);
+        while (studentList.firstChild) {
+          studentList.removeChild(studentList.firstChild);
+        }
+        // Then, add the new one inside the array
+        studentToShow.push(studentContainer);
+      } else {
+        console.log('This name does not match!');
       }
     }
   }
+
+  for (let i = 0; i < studentToShow.length; i++) {
+    studentList.appendChild(studentToShow[i]);
+  }
+
 } // End: searchForAName function
 
 
