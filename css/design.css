@@ -122,7 +122,3 @@ body{
 .not-active {
   display: none;
 }
-
-.active {
-  display: block;
-}

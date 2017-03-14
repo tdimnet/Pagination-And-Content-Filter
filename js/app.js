@@ -1,5 +1,4 @@
 // Selecting the elements already here inside the DOM
-const studentList             = document.querySelector('.student-list');
 const studentsArray           = document.querySelectorAll('.student-item');
 
 
@@ -7,13 +6,14 @@ const studentsArray           = document.querySelectorAll('.student-item');
 const studentSearchContainer  = document.createElement('div');
 const searchInput             = document.createElement('input');
 const searchButton            = document.createElement('button');
-const studentToShow           = [];
+const notFoundTitle           = document.createElement('h3');
 
 
 // Adding classes, attributes & texts when needed
 studentSearchContainer.classList.add('student-search');
 searchInput.setAttribute('placeholder', 'Search for students...');
 searchButton.textContent = "Search";
+notFoundTitle.textContent = 'Nope, this name is not present';
 
 
 // Adding the elements to the parent node element first
@@ -23,6 +23,17 @@ studentSearchContainer.appendChild(searchButton);
 document.querySelector('.page-header').appendChild(studentSearchContainer);
 
 
+
+function paginationLinks() {
+  
+}
+
+
+
+
+
+
+
 // The search function
 function searchForAName() {
   // Asigning the search input value
@@ -30,7 +41,10 @@ function searchForAName() {
 
   // If the search input is not filled in, show error
   if (searchText.length === 0) {
-    alert('Please fill in the form..');
+    for (let i = 0; i < studentsArray.length; i++) {
+      let studentContainer = studentsArray[i];
+      studentContainer.className = 'student-item cf';
+    }
   // Else search for the name
   } else {
     // Loop into the studentsArray in order to search for a name
@@ -43,7 +57,7 @@ function searchForAName() {
       let lastName          = studentFullName[1].toLowerCase();
       // Then check if the searchText = lastName ou firstName
       if ( (firstName === searchText) || (lastName === searchText) ) {
-        studentContainer.removeAttribute('className', 'not-active');
+        studentContainer.className = 'student-item cf';
       } else {
         // Hide all students and display not found message
         studentContainer.className = 'not-active';
