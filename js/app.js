@@ -1,6 +1,6 @@
 // Selecting the elements already here inside the DOM
 const studentList             = document.querySelector('.student-list');
-const studentsArray           = document.querySelectorAll('.student-details');
+const studentsArray           = document.querySelectorAll('.student-item');
 
 
 // Creating DOM Elements
@@ -43,22 +43,13 @@ function searchForAName() {
       let lastName          = studentFullName[1].toLowerCase();
       // Then check if the searchText = lastName ou firstName
       if ( (firstName === searchText) || (lastName === searchText) ) {
-        // First, remove all the element within the student-list
-        while (studentList.firstChild) {
-          studentList.removeChild(studentList.firstChild);
-        }
-        // Then, add the new one inside the array
-        studentToShow.push(studentContainer);
+        studentContainer.removeAttribute('className', 'not-active');
       } else {
-        console.log('This name does not match!');
+        // Hide all students and display not found message
+        studentContainer.className = 'not-active';
       }
     }
   }
-
-  for (let i = 0; i < studentToShow.length; i++) {
-    studentList.appendChild(studentToShow[i]);
-  }
-
 } // End: searchForAName function
 
 

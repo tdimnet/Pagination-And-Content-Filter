@@ -117,3 +117,12 @@ body{
       background-color: #4ba6c3;
       color: #fff;
     }
+
+/* Custom CSS */
+.not-active {
+  display: none;
+}
+
+.active {
+  display: block;
+}
