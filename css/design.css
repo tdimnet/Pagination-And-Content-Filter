@@ -119,6 +119,10 @@ body{
     }
 
 /* Custom CSS */
+.hidden {
+  display: none;
+}
+
 .not-active {
   display: none;
 }

@@ -1,4 +1,7 @@
 // Selecting the elements already here inside the DOM
+const pageElt                 = document.querySelector('.page');
+const pageHeader              = document.querySelector('.page-header');
+const studentList             = document.querySelector('.student-list');
 const studentsArray           = document.querySelectorAll('.student-item');
 
 
@@ -20,30 +23,24 @@ notFoundTitle.textContent = 'Nope, this name is not present';
 studentSearchContainer.appendChild(searchInput);
 studentSearchContainer.appendChild(searchButton);
 // Then adding them to the DOM
-document.querySelector('.page-header').appendChild(studentSearchContainer);
-
-
-
-function paginationLinks() {
-  
-}
-
-
-
-
+  // The not found title, by default, hidden
+pageElt.insertBefore(notFoundTitle, studentList);
+notFoundTitle.className = 'hidden';
+  // Add the search box
+pageHeader.appendChild(studentSearchContainer);
 
 
 
 // The search function
-function searchForAName() {
+const searchForAName = () => {
   // Asigning the search input value
-  const searchText = searchInput.value.toLowerCase();
-
-  // If the search input is not filled in, show error
+  let searchText = searchInput.value.toLowerCase();
+  // If the search input is not filled in, show all students
   if (searchText.length === 0) {
     for (let i = 0; i < studentsArray.length; i++) {
       let studentContainer = studentsArray[i];
       studentContainer.className = 'student-item cf';
+      notFoundTitle.className = 'hidden';
     }
   // Else search for the name
   } else {
@@ -55,13 +52,21 @@ function searchForAName() {
       studentFullName       = studentFullName.split(' ');
       let firstName         = studentFullName[0].toLowerCase();
       let lastName          = studentFullName[1].toLowerCase();
-      // Then check if the searchText = lastName ou firstName
+      // Then display the students who match
       if ( (firstName === searchText) || (lastName === searchText) ) {
         studentContainer.className = 'student-item cf';
       } else {
-        // Hide all students and display not found message
+        // When student does not match, hide it
         studentContainer.className = 'not-active';
       }
+    }
+
+    // If all student are hidden, show not found title
+    if (document.querySelectorAll('.not-active').length === studentsArray.length) {
+      notFoundTitle.className = '';
+    // Else, hide the not found title
+    } else {
+      notFoundTitle.className = 'hidden';
     }
   }
 } // End: searchForAName function
