@@ -2,7 +2,7 @@
 const pageElt                 = document.querySelector('.page');
 const pageHeader              = document.querySelector('.page-header');
 const studentList             = document.querySelector('.student-list');
-const studentsArray           = document.querySelectorAll('.student-item');
+const studentsItem            = document.querySelectorAll('.student-item');
 
 
 // Creating DOM Elements
@@ -30,6 +30,14 @@ notFoundTitle.className = 'hidden';
 pageHeader.appendChild(studentSearchContainer);
 
 
+// The pagination function
+function pagination() {
+  // Start by creating a variable which holds all student with active statement
+  let activeItem = document.querySelectorAll('.student-item');
+  // Then loop through them and create sub arrays
+  
+}
+
 
 // The search function
 const searchForAName = () => {
@@ -37,18 +45,18 @@ const searchForAName = () => {
   let searchText = searchInput.value.toLowerCase();
   // If the search input is not filled in, show all students
   if (searchText.length === 0) {
-    for (let i = 0; i < studentsArray.length; i++) {
-      let studentContainer = studentsArray[i];
+    for (let i = 0; i < studentsItem.length; i++) {
+      let studentContainer = studentsItem[i];
       studentContainer.className = 'student-item cf';
       notFoundTitle.className = 'hidden';
     }
   // Else search for the name
   } else {
     // Loop into the studentsArray in order to search for a name
-    for (let i = 0; i < studentsArray.length; i++) {
+    for (let i = 0; i < studentsItem.length; i++) {
       // Take the name within the h3 tag, build the variables needed
-      let studentContainer  = studentsArray[i];
-      let studentFullName   = studentsArray[i].querySelector('h3').textContent;
+      let studentContainer  = studentsItem[i];
+      let studentFullName   = studentsItem[i].querySelector('h3').textContent;
       studentFullName       = studentFullName.split(' ');
       let firstName         = studentFullName[0].toLowerCase();
       let lastName          = studentFullName[1].toLowerCase();
@@ -62,7 +70,7 @@ const searchForAName = () => {
     }
 
     // If all student are hidden, show not found title
-    if (document.querySelectorAll('.not-active').length === studentsArray.length) {
+    if (document.querySelectorAll('.not-active').length === studentsItem.length) {
       notFoundTitle.className = '';
     // Else, hide the not found title
     } else {
