@@ -30,14 +30,6 @@ notFoundTitle.className = 'hidden';
 pageHeader.appendChild(studentSearchContainer);
 
 
-// The pagination function
-function pagination() {
-  // Start by creating a variable which holds all student with active statement
-  let activeItem = document.querySelectorAll('.student-item');
-  // Then loop through them and create sub arrays
-  
-}
-
 
 // The search function
 const searchForAName = () => {
