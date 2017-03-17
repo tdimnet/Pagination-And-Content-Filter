@@ -29,7 +29,7 @@ const displayResults = (begin, end) => {
 
     // Create the number of anchors needed
 const pagination = () => {
-    for (let i = 0; i < numPages(); i++) {
+    for (let i = 0; i <= numPages(); i++) {
         // First create the elements
         let item = document.createElement('li');
         let anchor = document.createElement('a');
@@ -40,9 +40,17 @@ const pagination = () => {
         paginationList.appendChild(item);
         // Then the event listener
         anchor.addEventListener('click', function(event) {
-            let startAt = i * 10;
-            let finishAt = startAt + 10 - 1;
-            displayResults(startAt, finishAt);
+            // If this is the latest page, show only the last item
+            if (i === numPages()) {
+                let startAt = i * 10;
+                let finishAt = studentItems.length - 1;
+                displayResults(startAt, finishAt);
+            // For the previous page, do this
+            } else {
+                let startAt = i * 10;
+                let finishAt = startAt + 10 - 1;
+                displayResults(startAt, finishAt);
+            }
         });
     }
 }
