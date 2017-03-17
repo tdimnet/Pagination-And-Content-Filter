@@ -22,8 +22,13 @@ const numPages = () => Math.ceil(studentItems.length / 10) - 1;
 
     // Return the students selected by their range
 const displayResults = (begin, end) => {
+    // First hide all the students
+    for (let y = 0; y < studentItems.length; y++) {
+        studentItems[y].className = 'not-active';
+    }
+    // Then show those are needed
     for (let i = begin; i <= end; i++) {
-        console.log(studentItems[i])
+        studentItems[i].className = 'student-item cf';
     }
 };
 
@@ -51,12 +56,17 @@ const pagination = () => {
                 let finishAt = startAt + 10 - 1;
                 displayResults(startAt, finishAt);
             }
+
+            console.log(anchor);
         });
     }
 }
 
 // Finally, run the function
-pagination();
 
 
-// The event listeners
+// When the page loads, show the first results
+window.onload = () => {
+    pagination();
+    displayResults(0, 9);
+};
