@@ -1,7 +1,6 @@
 // Selecting the elements already here inside the DOM
 const studentItems = document.querySelectorAll('.student-item');
 
-
 // Creating DOM Elements
 const paginationContainer = document.createElement('div');
 const paginationList = document.createElement('ul');
@@ -21,6 +20,13 @@ document.querySelector('.page').appendChild(paginationContainer);
     // Return the total number of pages
 const numPages = () => Math.ceil(studentItems.length / 10) - 1;
 
+    // Return the students selected by their range
+const displayResults = (begin, end) => {
+    for (let i = begin; i <= end; i++) {
+        console.log(studentItems[i])
+    }
+};
+
     // Create the number of anchors needed
 const pagination = () => {
     for (let i = 0; i < numPages(); i++) {
@@ -32,8 +38,17 @@ const pagination = () => {
         // Then add them
         item.appendChild(anchor);
         paginationList.appendChild(item);
+        // Then the event listener
+        anchor.addEventListener('click', function(event) {
+            let startAt = i * 10;
+            let finishAt = startAt + 10 - 1;
+            displayResults(startAt, finishAt);
+        });
     }
 }
 
 // Finally, run the function
 pagination();
+
+
+// The event listeners
