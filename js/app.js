@@ -107,6 +107,8 @@ const searchForAName = () => {
       studentContainer.className = 'student-item cf';
       notFoundTitle.className = 'hidden';
     }
+    // And restart display the first results
+    displayResults(0, 9);
   // Else search for the name
   } else {
     // Loop into the studentsArray in order to search for a name
