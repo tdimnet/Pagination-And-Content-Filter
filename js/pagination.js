@@ -32,6 +32,17 @@ const displayResults = (begin, end) => {
     }
 };
 
+    // When a pagination list item is clicked
+const setActiveClass = (target) => {
+    const paginationAnchors = paginationList.querySelectorAll('a');
+    // First, remove all the active class
+    for (let i = 0; i < paginationAnchors.length; i++) {
+        paginationAnchors[i].className = '';
+    }
+    // Then, append the class to the item clicked
+    target.className = 'active';
+};
+
     // Create the number of anchors needed
 const pagination = () => {
     for (let i = 0; i <= numPages(); i++) {
@@ -57,16 +68,19 @@ const pagination = () => {
                 displayResults(startAt, finishAt);
             }
 
-            console.log(anchor);
+            // Set the active class statement when this class is clicked
+            setActiveClass(this);
         });
     }
-}
+};
 
-// Finally, run the function
 
 
 // When the page loads, show the first results
 window.onload = () => {
     pagination();
+    // By default, when the page loads, the first page is always selected
     displayResults(0, 9);
+    // And the style is applied to its relative anchor.
+    paginationList.querySelector('a').className = 'active';
 };

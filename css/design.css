@@ -102,6 +102,7 @@ body{
  
   .pagination li{
     display: inline;
+    cursor: pointer;
   }
 
     .pagination li a{
