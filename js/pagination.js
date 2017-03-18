@@ -1,19 +1,19 @@
 // Selecting the elements already here inside the DOM
-const studentItems = document.querySelectorAll('.student-item');
+  const studentItems = document.querySelectorAll('.student-item');
 
 // Creating DOM Elements
-const paginationContainer = document.createElement('div');
-const paginationList = document.createElement('ul');
+  const paginationContainer = document.createElement('div');
+  const paginationList = document.createElement('ul');
 
 
 // Adding classes, attributes & texts when needed
-paginationContainer.className = 'pagination';
+  paginationContainer.className = 'pagination';
 
 
 // Adding the elements to the parent node element first
-paginationContainer.appendChild(paginationList);
+  paginationContainer.appendChild(paginationList);
 // Then adding them to the DOM
-document.querySelector('.page').appendChild(paginationContainer);
+  document.querySelector('.page').appendChild(paginationContainer);
 
 
 // Creating the functions needes
