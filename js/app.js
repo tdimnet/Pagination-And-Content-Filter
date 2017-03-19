@@ -106,9 +106,11 @@ const searchForAName = () => {
       let studentContainer = studentsItem[i];
       studentContainer.className = 'student-item cf';
       notFoundTitle.className = 'hidden';
+      paginationContainer.className = 'pagination';
     }
     // And restart display the first results
     displayResults(0, 9);
+    setActiveClass(paginationList.querySelectorAll('a')[0]);
   // Else search for the name
   } else {
     // Loop into the studentsArray in order to search for a name
@@ -131,9 +133,11 @@ const searchForAName = () => {
     // If all student are hidden, show not found title
     if (document.querySelectorAll('.not-active').length === studentsItem.length) {
       notFoundTitle.className = '';
+      paginationContainer.className = 'hidden';
     // Else, hide the not found title
     } else {
       notFoundTitle.className = 'hidden';
+      paginationContainer.className = 'hidden';
     }
   }
 } // End: searchForAName function
