@@ -99,7 +99,7 @@ const pagination = () => {
 // The search function
 const searchForAName = () => {
   // Asigning the search input value
-  let searchText = searchInput.value.toLowerCase();
+  const searchText = searchInput.value.toLowerCase();
   // If the search input is not filled in, show all students
   if (searchText.length === 0) {
     for (let i = 0; i < studentsItem.length; i++) {
@@ -108,7 +108,7 @@ const searchForAName = () => {
       notFoundTitle.className = 'hidden';
       paginationContainer.className = 'pagination';
     }
-    // And restart display the first results
+    // And reboot the pagination system
     displayResults(0, 9);
     setActiveClass(paginationList.querySelectorAll('a')[0]);
   // Else search for the name
